@@ -1,15 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const Package = require('../package.json');
+const index = require('../controllers/index');
+const user = require('./user');
+const book = require('./book');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.send({
-    name: Package.name,
-    version: Package.version,
-    description: Package.description,
-  });
-});
+router.use('/', index);
+router.use('/user', user);
+router.use('/book', book);
 
 module.exports = router;
